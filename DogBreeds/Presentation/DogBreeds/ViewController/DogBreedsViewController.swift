@@ -94,6 +94,9 @@ class DogBreedsViewController: UIViewController {
             arrowImageView.centerXAnchor.constraint(equalTo: scrollToTopButton.centerXAnchor),
             arrowImageView.centerYAnchor.constraint(equalTo: scrollToTopButton.centerYAnchor)
         ])
+        
+        // Fav
+        addFavButton()
     }
     
     // MARK: - scrollToTopAction
@@ -101,6 +104,24 @@ class DogBreedsViewController: UIViewController {
         self.tableView.setContentOffset(.zero, animated: true)
     }
 
+}
+
+// MARK: - Fav
+extension DogBreedsViewController {
+    
+    // MARK: - addFavButton
+    private func addFavButton() {
+        let img = UIImage(named: "fav")!.withRenderingMode(.alwaysOriginal)
+        let rightButton = UIBarButtonItem(image: img, style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.moveToFaveScreen))
+        self.navigationItem.rightBarButtonItem = rightButton
+    }
+    
+    // MARK: - moveToFavScreen
+    @objc func moveToFaveScreen() {
+        let favViewController = FavViewController()
+        self.navigationController?.pushViewController(favViewController, animated: true)
+    }
+    
 }
 
 // MARK: - Fetch Dog Breeds

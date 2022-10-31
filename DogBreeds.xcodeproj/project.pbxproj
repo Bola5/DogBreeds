@@ -33,6 +33,7 @@
 		8394B68F290FEE100016455D /* DogBreedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8394B68E290FEE100016455D /* DogBreedTableViewCell.swift */; };
 		8394B691290FEE640016455D /* DogBreedImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8394B690290FEE640016455D /* DogBreedImageCollectionViewCell.swift */; };
 		8394B693290FEE840016455D /* DogBreedFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8394B692290FEE840016455D /* DogBreedFlowLayout.swift */; };
+		8394B69B29100FB20016455D /* FavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8394B69A29100FB20016455D /* FavViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		8394B68E290FEE100016455D /* DogBreedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogBreedTableViewCell.swift; sourceTree = "<group>"; };
 		8394B690290FEE640016455D /* DogBreedImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogBreedImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		8394B692290FEE840016455D /* DogBreedFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogBreedFlowLayout.swift; sourceTree = "<group>"; };
+		8394B69A29100FB20016455D /* FavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 		8394B668290817A30016455D /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				8394B69829100F8E0016455D /* Fav */,
 				8394B689290FD85B0016455D /* DogBreed */,
 				8394B669290817C50016455D /* DogBreeds */,
 			);
@@ -160,6 +163,7 @@
 		8394B66A290818070016455D /* Business Logic */ = {
 			isa = PBXGroup;
 			children = (
+				8394B69729100F7C0016455D /* Fav */,
 				8394B67B290FD3CB0016455D /* DogBreed */,
 				8394B66B290818220016455D /* DogBreeds */,
 			);
@@ -279,6 +283,29 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		8394B69729100F7C0016455D /* Fav */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Fav;
+			sourceTree = "<group>";
+		};
+		8394B69829100F8E0016455D /* Fav */ = {
+			isa = PBXGroup;
+			children = (
+				8394B69929100F960016455D /* ViewController */,
+			);
+			path = Fav;
+			sourceTree = "<group>";
+		};
+		8394B69929100F960016455D /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8394B69A29100FB20016455D /* FavViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -367,6 +394,7 @@
 				8394B679290FD1E40016455D /* DogBreedsTableViewCell.swift in Sources */,
 				8394B6712908194D0016455D /* DogBreedsModel.swift in Sources */,
 				8394B65F290811190016455D /* CommunicationManager.swift in Sources */,
+				8394B69B29100FB20016455D /* FavViewController.swift in Sources */,
 				8394B63F29080FDE0016455D /* AppDelegate.swift in Sources */,
 				8394B676290821B50016455D /* DogBreedsViewModel.swift in Sources */,
 				8394B683290FD6A00016455D /* DogBreedModel.swift in Sources */,
