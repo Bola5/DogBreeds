@@ -58,8 +58,8 @@ class DogBreedsTableViewCell: UITableViewCell {
 // MARK: - loadViewWithLayoutViewModel
 extension DogBreedsTableViewCell {
     
-    func loadViewWithLayoutViewModel(breedName: String) {
-        
+    func loadViewWithLayoutViewModel(breedName: String?) {
+        guard let breedName = breedName else { return }
         self.nameLbl.text = breedName
     }
     

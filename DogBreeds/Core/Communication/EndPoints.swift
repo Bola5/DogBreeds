@@ -10,6 +10,7 @@ import Foundation
 enum EndPoints {
     
     case fetchDogBreedsList
+    case fetchDogBreedImages(breedName: String)
 
     private var baseURLString: String { "https://dog.ceo/api/" }
 
@@ -17,12 +18,14 @@ enum EndPoints {
         switch self {
         case .fetchDogBreedsList:
             return URL(string: baseURLString + "breeds/list/all")
+        case .fetchDogBreedImages(let breedName):
+            return URL(string: "\(baseURLString)breed/\(breedName)/images")
         }
     }
 
     private var parameters: [URLQueryItem] {
         switch self {
-        case .fetchDogBreedsList: return []
+        case .fetchDogBreedsList, .fetchDogBreedImages: return []
         }
     }
 

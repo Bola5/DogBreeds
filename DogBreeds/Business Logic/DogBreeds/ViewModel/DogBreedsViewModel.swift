@@ -12,6 +12,7 @@ protocol DogBreedsViewModelProtocol {
     //MARK: - Protocol - Data Source
     var countOfBreeds: Int { get }
     func breedAt(index: Int) -> String?
+    func breedsBy(name: String) -> [String]
     
     // MARK: - Protocol - fetch
     func fetchDogBreedsList(completion: @escaping DogBreedsViewModel.GetDogBreedsListCompletionBlock)
@@ -45,6 +46,12 @@ extension DogBreedsViewModel {
     // Breed at index
     func breedAt(index: Int) -> String? {
         return self.layoutViewModel?.getAvailableBreeds()[index].capitalized
+    }
+    
+    // Breeds by name
+    func breedsBy(name: String) -> [String] {
+        guard let breeds = self.layoutViewModel?.message?[name] ?? [] else { return [] }
+        return breeds
     }
     
 }

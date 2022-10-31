@@ -174,7 +174,12 @@ extension DogBreedsViewController: UITableViewDataSource {
 extension DogBreedsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let breedName = viewModel.breedAt(index: indexPath.row)?.lowercased() else {
+            return
+        }
         
+        let viewController = DogBreedViewController(viewModel: DogBreedViewModel(breed: breedName, breeds: viewModel.breedsBy(name: breedName)))
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
 }

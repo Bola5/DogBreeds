@@ -28,8 +28,8 @@ extension UIImageView {
         }.resume()
     }
     
-    func loadImageWith(id: Int, contentMode mode: ContentMode = .scaleAspectFit) {
-        guard let url = URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/\(id).png") else { return }
+    func loadImageWith(url: String, contentMode mode: ContentMode = .scaleAspectFit) {
+        guard let url = URL(string: url) else { return }
         self.downloaded(from: url, contentMode: mode)
     }
     
