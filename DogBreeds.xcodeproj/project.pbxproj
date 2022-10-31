@@ -24,6 +24,7 @@
 		8394B6712908194D0016455D /* DogBreedsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8394B6702908194D0016455D /* DogBreedsModel.swift */; };
 		8394B674290821A20016455D /* DogBreedsLayoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8394B673290821A20016455D /* DogBreedsLayoutViewModel.swift */; };
 		8394B676290821B50016455D /* DogBreedsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8394B675290821B50016455D /* DogBreedsViewModel.swift */; };
+		8394B679290FD1E40016455D /* DogBreedsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8394B678290FD1E40016455D /* DogBreedsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		8394B6702908194D0016455D /* DogBreedsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogBreedsModel.swift; sourceTree = "<group>"; };
 		8394B673290821A20016455D /* DogBreedsLayoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogBreedsLayoutViewModel.swift; sourceTree = "<group>"; };
 		8394B675290821B50016455D /* DogBreedsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogBreedsViewModel.swift; sourceTree = "<group>"; };
+		8394B678290FD1E40016455D /* DogBreedsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogBreedsTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 		8394B669290817C50016455D /* DogBreeds */ = {
 			isa = PBXGroup;
 			children = (
+				8394B677290FD1BD0016455D /* Cell */,
 				8394B64229080FDE0016455D /* DogBreedsViewController.swift */,
 			);
 			path = DogBreeds;
@@ -178,6 +181,14 @@
 				8394B675290821B50016455D /* DogBreedsViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8394B677290FD1BD0016455D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				8394B678290FD1E40016455D /* DogBreedsTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,6 +270,7 @@
 				8394B64329080FDE0016455D /* DogBreedsViewController.swift in Sources */,
 				8394B65D290811190016455D /* ErrorHandling.swift in Sources */,
 				8394B665290813A80016455D /* Extensions.swift in Sources */,
+				8394B679290FD1E40016455D /* DogBreedsTableViewCell.swift in Sources */,
 				8394B6712908194D0016455D /* DogBreedsModel.swift in Sources */,
 				8394B65F290811190016455D /* CommunicationManager.swift in Sources */,
 				8394B63F29080FDE0016455D /* AppDelegate.swift in Sources */,

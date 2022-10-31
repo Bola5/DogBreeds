@@ -8,7 +8,7 @@
 import Foundation
 
 protocol DogBreedsDataSourceProtocol {
-    func fetchDogBreedsList(completion: @escaping (Result<DogBreedsModel, Error>) -> Void)
+    func fetchDogBreedsList(completion: @escaping (Result<DogBreedsModel, ErrorManager>) -> Void)
 }
 
 class DogBreedsDataSource: DogBreedsDataSourceProtocol {
@@ -19,8 +19,8 @@ class DogBreedsDataSource: DogBreedsDataSourceProtocol {
         self.communicationManagerProtocol = communicationManagerProtocol
     }
 
-    func fetchDogBreedsList(completion: @escaping (Result<DogBreedsModel, Error>) -> Void) {
-        communicationManagerProtocol.request(urlString: EndPoints.fetchDogBreedsList.asRequest(), completion: { (result : Result<DogBreedsModel, Error>) in
+    func fetchDogBreedsList(completion: @escaping (Result<DogBreedsModel, ErrorManager>) -> Void) {
+        communicationManagerProtocol.request(urlString: EndPoints.fetchDogBreedsList.asRequest(), completion: { (result : Result<DogBreedsModel, ErrorManager>) in
             switch result {
                 case .success(let model):
                 completion(.success(model))

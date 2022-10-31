@@ -21,7 +21,7 @@ struct DogBreedsLayoutViewModel {
 extension DogBreedsLayoutViewModel {
     
     func getAvailableBreeds() -> [String] {
-        guard let availableBreeds = self.message?.map({ $0.key }) else { return [] }
+        guard let availableBreeds = self.message?.map({ $0.key }).sorted() else { return [] }
         return availableBreeds
     }
     
