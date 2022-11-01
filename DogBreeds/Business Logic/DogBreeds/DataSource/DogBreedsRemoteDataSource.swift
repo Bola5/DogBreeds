@@ -1,5 +1,5 @@
 //
-//  DogBreedsDataSource.swift
+//  DogBreedsRemoteDataSource.swift
 //  DogBreeds
 //
 //  Created by Bola Fayez on 25/10/2022.
@@ -7,11 +7,11 @@
 
 import Foundation
 
-protocol DogBreedsDataSourceProtocol {
+protocol DogBreedsRemoteDataSourceProtocol {
     func fetchDogBreedsList(completion: @escaping (Result<DogBreedsModel, ErrorManager>) -> Void)
 }
 
-class DogBreedsDataSource: DogBreedsDataSourceProtocol {
+class DogBreedsRemoteDataSource: DogBreedsRemoteDataSourceProtocol {
     
     private let communicationManagerProtocol: CommunicationManagerProtocol
     

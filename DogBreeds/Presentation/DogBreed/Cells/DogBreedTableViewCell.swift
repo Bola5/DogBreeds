@@ -21,7 +21,10 @@ class DogBreedTableViewCell: UITableViewCell {
     private var collectionView: UICollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: DogBreedFlowLayout())
     
     // MARK: - Properties
-    private var images: [String]?
+    private var breedImages: [DogBreedLayoutViewModel.DogBreedImageLayoutViewModel]?
+    
+    // MARK: - Action
+    private var onActionEvent: ((DogBreedAction) -> Void)?
     
     // MARK: - Init
     // Cell style
@@ -73,10 +76,11 @@ class DogBreedTableViewCell: UITableViewCell {
 // MARK: - Load Data
 extension DogBreedTableViewCell {
     
-    func loadViewWithLayoutViewModel(images: [String]?) {
-        guard let images = images else { return }
+    func loadViewWithLayoutViewModel(breedImages: [DogBreedLayoutViewModel.DogBreedImageLayoutViewModel]?, onAction: ((DogBreedAction) -> Void)?) {
+        guard let breedImages = breedImages else { return }
 
-        self.images = images
+        self.breedImages = breedImages
+        self.onActionEvent = onAction
         collectionView.reloadData()
     }
     
@@ -86,21 +90,21 @@ extension DogBreedTableViewCell {
 extension DogBreedTableViewCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.images?.count ?? 0
+        return self.breedImages?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Cell.reuseIdentifier, for: indexPath)
         
-        let layoutViewModel = self.images?[indexPath.row]
+        let layoutViewModel = self.breedImages?[indexPath.row]
         
         guard let layoutViewModel = layoutViewModel else {
             return cell
         }
         
         if let cell = cell as? DogBreedImageCollectionViewCell {
-            cell.loadDataWithLayoutViewModel(image: layoutViewModel)
+            cell.loadDataWithLayoutViewModel(breedImage: layoutViewModel, onAction: self.onActionEvent)
         }
         
         return cell

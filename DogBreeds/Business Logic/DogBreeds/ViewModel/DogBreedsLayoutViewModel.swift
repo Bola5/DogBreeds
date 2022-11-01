@@ -18,6 +18,7 @@ struct DogBreedsLayoutViewModel {
 
 }
 
+// MARK: - Get Available Breeds
 extension DogBreedsLayoutViewModel {
     
     func getAvailableBreeds() -> [String] {

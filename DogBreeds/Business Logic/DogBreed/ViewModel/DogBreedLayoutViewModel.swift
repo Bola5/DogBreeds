@@ -16,4 +16,18 @@ struct DogBreedLayoutViewModel {
         self.message = dogBreed.message
     }
 
+    struct DogBreedImageLayoutViewModel {
+        let imageURL: String
+        let isFav: Bool
+    }
+    
+}
+
+// MARK: - Get The Breed Images With Fav
+extension DogBreedLayoutViewModel {
+
+    func getTheBreedImagesWithFav() -> [DogBreedImageLayoutViewModel]? {
+        return self.message.compactMap({ DogBreedImageLayoutViewModel(imageURL: $0, isFav: false) })
+    }
+    
 }

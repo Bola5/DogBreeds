@@ -99,6 +99,20 @@ extension DogBreedViewController {
     
 }
 
+// MARK: - DogBreed action
+extension DogBreedViewController {
+    
+    // MARK: - handleAction
+    private func handleAction(_ action: DogBreedAction) {
+        switch action {
+        case .addOrRemoveFromFav(imageURL: let imageURL, isFav: let isFav):
+            print(imageURL)
+            print(isFav)
+        }
+    }
+    
+}
+
 // MARK: - TableView Data Source
 extension DogBreedViewController: UITableViewDataSource {
     
@@ -124,7 +138,7 @@ extension DogBreedViewController: UITableViewDataSource {
         }
         
         if let cell = cell as? DogBreedTableViewCell {
-            cell.loadViewWithLayoutViewModel(images: layoutViewModel)
+            cell.loadViewWithLayoutViewModel(breedImages: layoutViewModel, onAction: self.handleAction(_:))
         }
         
         return cell

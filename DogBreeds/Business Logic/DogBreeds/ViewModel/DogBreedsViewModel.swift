@@ -25,7 +25,7 @@ class DogBreedsViewModel: DogBreedsViewModelProtocol {
 
     // MARK: - Properties
     // Data Source
-    private let dogBreedsDataSource: DogBreedsDataSourceProtocol
+    private let dogBreedsDataSource: DogBreedsRemoteDataSourceProtocol
     private var layoutViewModel: DogBreedsLayoutViewModel?
     
     var countOfBreeds: Int {
@@ -33,7 +33,7 @@ class DogBreedsViewModel: DogBreedsViewModelProtocol {
     }
     
     // Init
-    init(dogBreedsDataSource: DogBreedsDataSourceProtocol = DogBreedsDataSource()) {
+    init(dogBreedsDataSource: DogBreedsRemoteDataSourceProtocol = DogBreedsRemoteDataSource()) {
         
         self.dogBreedsDataSource = dogBreedsDataSource
     }

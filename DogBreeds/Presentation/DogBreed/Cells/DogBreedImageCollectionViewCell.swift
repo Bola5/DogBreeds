@@ -12,6 +12,13 @@ class DogBreedImageCollectionViewCell: UICollectionViewCell {
     // MARK: - UI
     private let containerView = UIView()
     private let breedImageView = UIImageView()
+    private let favButton = UIButton()
+    
+    // MARK: - Action
+    private var onActionEvent: ((DogBreedAction) -> Void)?
+    
+    // MARK: - Properties
+    private var breedImage: DogBreedLayoutViewModel.DogBreedImageLayoutViewModel?
     
     // MARK: - Init
     override init(frame: CGRect) {
@@ -46,6 +53,26 @@ class DogBreedImageCollectionViewCell: UICollectionViewCell {
             breedImageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
             breedImageView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor)
         ])
+        
+        // favButton
+        favButton.translatesAutoresizingMaskIntoConstraints = false
+        containerView.addSubview(favButton)
+        NSLayoutConstraint.activate([
+            favButton.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 8),
+            favButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -8),
+            favButton.heightAnchor.constraint(equalToConstant: 30),
+            favButton.widthAnchor.constraint(equalToConstant: 30)
+        ])
+        favButton.setImage(UIImage(named: "unFav"), for: .normal)
+        favButton.setImage(UIImage(named: "fav"), for: .selected)
+        favButton.addTarget(self, action: #selector(addOrRemoveFromFavAction), for: .touchUpInside)
+
+    }
+    
+    // MARK: - addOrRemoveFromFavAction
+    @objc func addOrRemoveFromFavAction(sender: UIButton) {
+        self.favButton.isSelected = !(self.favButton.isSelected)
+        self.onActionEvent?(.addOrRemoveFromFav(imageURL: self.breedImage?.imageURL ?? "", isFav: self.favButton.isSelected))
     }
     
 }
@@ -53,11 +80,14 @@ class DogBreedImageCollectionViewCell: UICollectionViewCell {
 // MARK: - Load data
 extension DogBreedImageCollectionViewCell {
     
-    func loadDataWithLayoutViewModel(image: String?) {
-        guard let image = image else { return }
+    func loadDataWithLayoutViewModel(breedImage: DogBreedLayoutViewModel.DogBreedImageLayoutViewModel?, onAction: ((DogBreedAction) -> Void)?) {
+        guard let breedImage = breedImage else { return }
         
-        self.breedImageView.loadImageWith(url: image, contentMode: .scaleToFill)
-        setupImageShap()
+        self.onActionEvent = onAction
+        self.breedImage = breedImage
+        self.favButton.isSelected = self.breedImage?.isFav ?? false
+        self.breedImageView.loadImageWith(url: self.breedImage?.imageURL ?? "", contentMode: .scaleToFill)
+        self.setupImageShap()
     }
     
     private func setupImageShap() {
