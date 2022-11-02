@@ -18,7 +18,7 @@ class DogBreedTableViewCell: UITableViewCell {
     
     // MARK: - UI
     private let containerView = UIView()
-    private var collectionView: UICollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: DogBreedFlowLayout())
+    private let collectionView: UICollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: DogBreedFlowLayout())
     
     // MARK: - Properties
     private var breedImages: [DogBreedLayoutViewModel.DogBreedImageLayoutViewModel]?

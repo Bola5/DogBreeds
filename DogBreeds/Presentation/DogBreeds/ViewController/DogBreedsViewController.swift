@@ -118,8 +118,8 @@ extension DogBreedsViewController {
     
     // MARK: - moveToFavScreen
     @objc func moveToFaveScreen() {
-        let favViewController = FavViewController()
-        self.navigationController?.pushViewController(favViewController, animated: true)
+        let favoriteViewController = FavoriteViewController()
+        self.navigationController?.pushViewController(favoriteViewController, animated: true)
     }
     
 }
