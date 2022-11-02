@@ -38,6 +38,8 @@
 		8394B6A329112C380016455D /* DBDogBreed+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8394B6A129112C380016455D /* DBDogBreed+CoreDataClass.swift */; };
 		8394B6A429112C380016455D /* DBDogBreed+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8394B6A229112C380016455D /* DBDogBreed+CoreDataProperties.swift */; };
 		8394B6A8291130D20016455D /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8394B6A7291130D20016455D /* Enums.swift */; };
+		8394B6AB291137DE0016455D /* DogBreedLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8394B6AA291137DE0016455D /* DogBreedLocalDataSource.swift */; };
+		8394B6AD291139130016455D /* DogBreedRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8394B6AC291139130016455D /* DogBreedRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +76,8 @@
 		8394B6A129112C380016455D /* DBDogBreed+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBDogBreed+CoreDataClass.swift"; sourceTree = "<group>"; };
 		8394B6A229112C380016455D /* DBDogBreed+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBDogBreed+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8394B6A7291130D20016455D /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		8394B6AA291137DE0016455D /* DogBreedLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogBreedLocalDataSource.swift; sourceTree = "<group>"; };
+		8394B6AC291139130016455D /* DogBreedRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogBreedRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,6 +232,7 @@
 			children = (
 				8394B67E290FD3E80016455D /* ViewModel */,
 				8394B67D290FD3E20016455D /* Model */,
+				8394B6A9291137BC0016455D /* Repository */,
 				8394B67C290FD3DA0016455D /* DataSource */,
 			);
 			path = DogBreed;
@@ -237,6 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				8394B680290FD4140016455D /* DogBreedRemoteDataSource.swift */,
+				8394B6AA291137DE0016455D /* DogBreedLocalDataSource.swift */,
 			);
 			path = DataSource;
 			sourceTree = "<group>";
@@ -297,7 +303,7 @@
 		8394B69729100F7C0016455D /* Fav */ = {
 			isa = PBXGroup;
 			children = (
-				8394B6A529112C4E0016455D /* Model */,
+				8394B6AE291160630016455D /* DataSource */,
 			);
 			path = Fav;
 			sourceTree = "<group>";
@@ -318,13 +324,6 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		8394B6A529112C4E0016455D /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		8394B6A629112C560016455D /* CoreDataModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -332,6 +331,21 @@
 				8394B6A229112C380016455D /* DBDogBreed+CoreDataProperties.swift */,
 			);
 			path = CoreDataModel;
+			sourceTree = "<group>";
+		};
+		8394B6A9291137BC0016455D /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				8394B6AC291139130016455D /* DogBreedRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		8394B6AE291160630016455D /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DataSource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -407,6 +421,7 @@
 				8394B685290FD7CC0016455D /* DogBreedLayoutViewModel.swift in Sources */,
 				8394B65E290811190016455D /* ErrorManager.swift in Sources */,
 				8394B68D290FD8880016455D /* DogBreedViewController.swift in Sources */,
+				8394B6AD291139130016455D /* DogBreedRepository.swift in Sources */,
 				8394B66E2908187D0016455D /* DogBreedsRemoteDataSource.swift in Sources */,
 				8394B693290FEE840016455D /* DogBreedFlowLayout.swift in Sources */,
 				8394B681290FD4140016455D /* DogBreedRemoteDataSource.swift in Sources */,
@@ -414,6 +429,7 @@
 				8394B674290821A20016455D /* DogBreedsLayoutViewModel.swift in Sources */,
 				8394B69E29112A070016455D /* DogBreeds.xcdatamodeld in Sources */,
 				8394B662290813650016455D /* LoadingManager.swift in Sources */,
+				8394B6AB291137DE0016455D /* DogBreedLocalDataSource.swift in Sources */,
 				8394B64329080FDE0016455D /* DogBreedsViewController.swift in Sources */,
 				8394B65D290811190016455D /* ErrorHandling.swift in Sources */,
 				8394B691290FEE640016455D /* DogBreedImageCollectionViewCell.swift in Sources */,

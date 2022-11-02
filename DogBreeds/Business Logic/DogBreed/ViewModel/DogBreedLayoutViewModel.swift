@@ -12,13 +12,14 @@ struct DogBreedLayoutViewModel {
     let message: [String]
         
     init(dogBreed: DogBreedModel) {
-        
+
         self.message = dogBreed.message
     }
 
     struct DogBreedImageLayoutViewModel {
-        let imageURL: String
-        let isFav: Bool
+        var breedName: String = ""
+        var imageURL: String
+        var isFav: Bool = false
     }
     
 }
@@ -27,7 +28,15 @@ struct DogBreedLayoutViewModel {
 extension DogBreedLayoutViewModel {
 
     func getTheBreedImagesWithFav() -> [DogBreedImageLayoutViewModel]? {
-        return self.message.compactMap({ DogBreedImageLayoutViewModel(imageURL: $0, isFav: false) })
+        return self.message.compactMap({ DogBreedImageLayoutViewModel(imageURL: $0) })
     }
     
+}
+
+// MARK: - Update fav
+extension DogBreedLayoutViewModel.DogBreedImageLayoutViewModel {
+    
+    mutating func updateFav(isFav: Bool) {
+        self.isFav = isFav
+    }
 }

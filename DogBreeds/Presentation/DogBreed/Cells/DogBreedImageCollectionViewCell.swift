@@ -16,7 +16,8 @@ class DogBreedImageCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Action
     private var onActionEvent: ((DogBreedAction) -> Void)?
-    
+    private var onSelectFav: ((Bool) -> Void)?
+
     // MARK: - Properties
     private var breedImage: DogBreedLayoutViewModel.DogBreedImageLayoutViewModel?
     
@@ -53,6 +54,9 @@ class DogBreedImageCollectionViewCell: UICollectionViewCell {
             breedImageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
             breedImageView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor)
         ])
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        breedImageView.isUserInteractionEnabled = true
+        breedImageView.addGestureRecognizer(tapGestureRecognizer)
         
         // favButton
         favButton.translatesAutoresizingMaskIntoConstraints = false
@@ -71,7 +75,16 @@ class DogBreedImageCollectionViewCell: UICollectionViewCell {
     
     // MARK: - addOrRemoveFromFavAction
     @objc func addOrRemoveFromFavAction(sender: UIButton) {
+        addOrRemoveFromFav()
+    }
+    
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
+        addOrRemoveFromFav()
+    }
+    
+    func addOrRemoveFromFav() {
         self.favButton.isSelected = !(self.favButton.isSelected)
+        self.onSelectFav?(self.favButton.isSelected)
         self.onActionEvent?(.addOrRemoveFromFav(imageURL: self.breedImage?.imageURL ?? "", isFav: self.favButton.isSelected))
     }
     
@@ -80,10 +93,11 @@ class DogBreedImageCollectionViewCell: UICollectionViewCell {
 // MARK: - Load data
 extension DogBreedImageCollectionViewCell {
     
-    func loadDataWithLayoutViewModel(breedImage: DogBreedLayoutViewModel.DogBreedImageLayoutViewModel?, onAction: ((DogBreedAction) -> Void)?) {
+    func loadDataWithLayoutViewModel(breedImage: DogBreedLayoutViewModel.DogBreedImageLayoutViewModel?, onAction: ((DogBreedAction) -> Void)?, onSelectFav: ((Bool) -> Void)?) {
         guard let breedImage = breedImage else { return }
         
         self.onActionEvent = onAction
+        self.onSelectFav = onSelectFav
         self.breedImage = breedImage
         self.favButton.isSelected = self.breedImage?.isFav ?? false
         self.breedImageView.loadImageWith(url: self.breedImage?.imageURL ?? "", contentMode: .scaleToFill)

@@ -14,6 +14,7 @@ protocol DogBreedViewModelProtocol {
     var breedName: String { get }
     func breedAt(index: Int) -> String
     func breedImagesBy(name: String) -> [DogBreedLayoutViewModel.DogBreedImageLayoutViewModel]?
+    func addOrRemoveFromFav(imageURL: String, isFav: Bool)
 
     // MARK: - Protocol - fetch
     func fetchDogBreedImages(completion: @escaping DogBreedViewModel.GetDogBreedImagesCompletionBlock)
@@ -26,7 +27,7 @@ class DogBreedViewModel: DogBreedViewModelProtocol {
 
     // MARK: - Properties
     // Data Source
-    private let dogBreedDataSource: DogBreedRemoteDataSourceProtocol
+    private let dogBreedRepository: DogBreedRepositoryProtocol
     private var layoutViewModel: DogBreedLayoutViewModel?
     private var imagesLayoutViewModel = [DogBreedLayoutViewModel.DogBreedImageLayoutViewModel]()
     private var breed: String
@@ -39,11 +40,11 @@ class DogBreedViewModel: DogBreedViewModelProtocol {
     }
     
     // Init
-    init(breed: String = "", breeds: [String] = [], dogBreedDataSource: DogBreedRemoteDataSourceProtocol = DogBreedRemoteDataSource()) {
+    init(breed: String = "", breeds: [String] = [], dogBreedRepository: DogBreedRepositoryProtocol = DogBreedRepository()) {
         
         self.breed = breed
         self.breeds = breeds
-        self.dogBreedDataSource = dogBreedDataSource
+        self.dogBreedRepository = dogBreedRepository
     }
     
 }
@@ -63,18 +64,46 @@ extension DogBreedViewModel {
         return images
     }
     
+    // AddOrRemoveFromFav
+    func addOrRemoveFromFav(imageURL: String, isFav: Bool) {
+        guard let index = self.imagesLayoutViewModel.firstIndex(where: { $0.imageURL.contains(imageURL) }),
+        var breed = self.imagesLayoutViewModel.first(where: { $0.imageURL.contains(imageURL) }) else { return }
+        
+        breed.updateFav(isFav: isFav)
+        self.imagesLayoutViewModel[index] = breed
+        
+        if isFav {
+            dogBreedRepository.addFav(breedName: breedName, breed: breed)
+        } else {
+            dogBreedRepository.removeFav(breedName: breedName, breed: breed)
+        }
+    }
+    
+    // UpdateTheBreedWithFav
+    private func updateTheBreedWithFav() {
+        let localLayoutViewModel = self.dogBreedRepository.getAllFavBreed()
+        for local in localLayoutViewModel {
+            if let index = self.imagesLayoutViewModel.firstIndex(where: { $0.imageURL.contains(local.imageURL) }),
+               var breed = self.imagesLayoutViewModel.first(where: { $0.imageURL.contains(local.imageURL) }) {
+                breed.updateFav(isFav: true)
+                self.imagesLayoutViewModel[index] = breed
+            }
+        }
+    }
+    
 }
 
 // MARK: - Protocol - fetch
 extension DogBreedViewModel {
     
     func fetchDogBreedImages(completion: @escaping GetDogBreedImagesCompletionBlock) {
-        dogBreedDataSource.fetchDogBreed(breedName: breed, completion: { [weak self] (result: Result<DogBreedModel, ErrorManager>) in
+        dogBreedRepository.fetchDogBreedImages(breedName: breed, completion: { [weak self] (result: Result<DogBreedLayoutViewModel, ErrorManager>) in
             switch result {
             case .success(let layoutViewModel):
-                self?.layoutViewModel = DogBreedLayoutViewModel(dogBreed: layoutViewModel)
+                self?.layoutViewModel = layoutViewModel
                 guard let breedImages = self?.layoutViewModel?.getTheBreedImagesWithFav() else { return completion(.success(true)) }
                 self?.imagesLayoutViewModel = breedImages
+                self?.updateTheBreedWithFav()
                 completion(.success(true))
             case .failure(let error):
                 completion(.failure(.parser(string: error.localizedDescription)))

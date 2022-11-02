@@ -136,3 +136,14 @@ extension DatabaseManager {
         }
     }
 }
+
+// MARK: - Delete
+extension DatabaseManager {
+    
+    func delete<T: NSManagedObject>(object: T) {
+        context.performAndWait {
+            context.delete(object)
+        }
+    }
+    
+}

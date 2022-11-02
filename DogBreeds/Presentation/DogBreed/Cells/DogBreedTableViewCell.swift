@@ -104,7 +104,9 @@ extension DogBreedTableViewCell: UICollectionViewDataSource {
         }
         
         if let cell = cell as? DogBreedImageCollectionViewCell {
-            cell.loadDataWithLayoutViewModel(breedImage: layoutViewModel, onAction: self.onActionEvent)
+            cell.loadDataWithLayoutViewModel(breedImage: layoutViewModel, onAction: self.onActionEvent, onSelectFav: { [weak self] isFav in
+                self?.breedImages?[indexPath.row].updateFav(isFav: isFav)
+            })
         }
         
         return cell

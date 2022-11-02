@@ -106,9 +106,18 @@ extension DogBreedViewController {
     private func handleAction(_ action: DogBreedAction) {
         switch action {
         case .addOrRemoveFromFav(imageURL: let imageURL, isFav: let isFav):
-            print(imageURL)
-            print(isFav)
+            addOrRemoveFromFav(imageURL: imageURL, isFav: isFav)
         }
+    }
+    
+    // AddOrRemoveFav
+    private func addOrRemoveFromFav(imageURL: String, isFav: Bool) {
+        viewModel.addOrRemoveFromFav(imageURL: imageURL, isFav: isFav)
+//        UIView.performWithoutAnimation {
+//            DispatchQueue.main.async { [weak self] in
+//                self?.tableView.reloadData()
+//            }
+//        }
     }
     
 }
