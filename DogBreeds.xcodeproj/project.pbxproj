@@ -361,6 +361,7 @@
 		8394B69829100F8E0016455D /* Favorite */ = {
 			isa = PBXGroup;
 			children = (
+				8394B6B42912A59D0016455D /* Cell */,
 				8394B69929100F960016455D /* ViewController */,
 			);
 			path = Favorite;
@@ -369,7 +370,6 @@
 		8394B69929100F960016455D /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				8394B6B42912A59D0016455D /* Cell */,
 				8394B69A29100FB20016455D /* FavoriteViewController.swift */,
 			);
 			path = ViewController;
