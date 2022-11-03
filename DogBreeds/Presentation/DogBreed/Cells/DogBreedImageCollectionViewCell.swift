@@ -67,8 +67,8 @@ class DogBreedImageCollectionViewCell: UICollectionViewCell {
             favButton.heightAnchor.constraint(equalToConstant: 30),
             favButton.widthAnchor.constraint(equalToConstant: 30)
         ])
-        favButton.setImage(UIImage(named: "unFav"), for: .normal)
-        favButton.setImage(UIImage(named: "fav"), for: .selected)
+        favButton.setImage(UIImage(named: Strings.UNFAV_IMAGE_NAME), for: .normal)
+        favButton.setImage(UIImage(named: Strings.FAV_IMAGE_NAME), for: .selected)
         favButton.addTarget(self, action: #selector(addOrRemoveFromFavAction), for: .touchUpInside)
 
     }

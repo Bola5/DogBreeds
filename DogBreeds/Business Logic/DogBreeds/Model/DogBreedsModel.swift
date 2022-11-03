@@ -16,6 +16,11 @@ struct DogBreedsModel: Codable {
         case message
         case status
     }
+    
+    init(message: [String: [String]?]?, status: String) {
+        self.message = message
+        self.status = status
+    }
 
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)

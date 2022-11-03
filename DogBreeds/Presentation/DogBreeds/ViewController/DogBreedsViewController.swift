@@ -54,7 +54,7 @@ class DogBreedsViewController: UIViewController {
     private func setupViews() {
         
         view.backgroundColor = .white
-        title = "Dog Breeds"
+        title = Strings.DOG_BREEDS_TITLE
         
         // tableView
         view.addSubview(tableView)
@@ -87,7 +87,7 @@ class DogBreedsViewController: UIViewController {
         scrollToTopButton.addTarget(self, action: #selector(scrollToTopAction), for: .touchUpInside)
 
         // Image
-        let arrowImageView = UIImageView.init(image: UIImage(named: "scrollToTop"))
+        let arrowImageView = UIImageView.init(image: UIImage(named: Strings.SCROLL_TO_TOP_IMAGE_NAME))
         arrowImageView.translatesAutoresizingMaskIntoConstraints = false
         scrollToTopButton.addSubview(arrowImageView)
         NSLayoutConstraint.activate([
@@ -111,7 +111,7 @@ extension DogBreedsViewController {
     
     // MARK: - addFavButton
     private func addFavButton() {
-        let img = UIImage(named: "fav")!.withRenderingMode(.alwaysOriginal)
+        let img = UIImage(named: Strings.FAV_IMAGE_NAME)!.withRenderingMode(.alwaysOriginal)
         let rightButton = UIBarButtonItem(image: img, style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.moveToFaveScreen))
         self.navigationItem.rightBarButtonItem = rightButton
     }

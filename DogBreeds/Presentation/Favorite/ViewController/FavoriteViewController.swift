@@ -53,7 +53,7 @@ class FavoriteViewController: UIViewController {
     private func setupViews() {
         
         view.backgroundColor = .white
-        title = "Favorites"
+        title = Strings.FAVORITES_TITLE
         
         // collectionView
         collectionView.translatesAutoresizingMaskIntoConstraints = false
