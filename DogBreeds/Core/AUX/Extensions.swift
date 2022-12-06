@@ -11,30 +11,21 @@ import UIKit
 extension UIImageView {
     
     func downloaded(from url: URL, contentMode mode: ContentMode = .scaleAspectFit) {
-        let imageCache = NSCache<NSString, AnyObject>()
-        
         contentMode = mode
-        if let cachedImage = imageCache.object(forKey: url.absoluteString as NSString) as? UIImage {
-            self.image = cachedImage
-        } else {
-            URLSession.shared.dataTask(with: url) { data, response, error in
-                guard let data = data,
-                      let imageToCache = UIImage(data: data),
-                      let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
-                      let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
-                      error == nil
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard
+                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+                let data = data, error == nil,
+                let image = UIImage(data: data)
                 else {
-                    DispatchQueue.main.async {
-                        self.image = UIImage(named: "PlaceholderImage")
-                    }
-                    return
-                }
-                DispatchQueue.main.async {
-                    imageCache.setObject(imageToCache, forKey: url.absoluteString as NSString)
-                    self.image = imageToCache
-                }
-            }.resume()
-        }
+                self.image = UIImage(named: "PlaceholderImage")
+                return
+            }
+            DispatchQueue.main.async() { [weak self] in
+                self?.image = image
+            }
+        }.resume()
     }
     
     func loadImageWith(url: String, contentMode mode: ContentMode = .scaleAspectFit) {
