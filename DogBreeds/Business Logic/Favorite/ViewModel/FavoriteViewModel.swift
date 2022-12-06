@@ -82,6 +82,7 @@ extension FavoriteViewModel {
     
     // Get breed name selected index
     private func getBreedNameSelectedBy(index: Int) -> String {
+        if breedNameLayoutViewModel.isEmpty { return "" }
         return breedNameLayoutViewModel[index].breedName
     }
     
