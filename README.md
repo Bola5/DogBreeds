@@ -17,6 +17,16 @@
 • Shows the images that the user liked
 • Shows which breed a particular image belongs to • Allows user to filter images by selecting a breed.
 
+## Description "PR description"
+1 - Remove the storyboard.
+2 - Build the core part of the app. "Network, Loading, Codable, Error".
+3 - Add the EndPoints.
+4 - Start building the dog breeds list start with building the model for the response, building the dataSource for the endPoint and parsing the response on the model, and building the layout view model which is used for the data that will be present, building the viewModel with fetch the data from the data source and add the dataSource methods will be used for the present the data, create the viewController with the tableView to present the bog breeds with scroll to top button.
+5 - Build the database manager and the schema to handle the fav part.
+6 - Start to build the dog breed list with sections for every single breed, starting to build the remote data source for fetch the images for the breed, build and schema and core data model, and the local dataSource to handle the fav and save, read and delete from core data, build the repo to handle the use for remote and local, build the layout view model with some logic for the present the data, build the ViewModel with the fetch from remote and methods to handle the fav, build the viewController and the tableView cell and collectionView cell with handle the add and remove from fav
+7 - Start building the fav screen, start with building the layout view model for the names, build the ViewModel to get the save fav from the core data, split between the name and images and build the view controller to present the data
+8 - Adding the unit tests
+
 ## Project Structure (MVVM)
 The project with MVVM structure
 - Models - for parsing the response on it
