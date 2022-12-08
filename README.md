@@ -5,7 +5,7 @@
 1. Please use the last version from Xcode 13 or bigger
 
 ## API Document
-https://dog.ceo/dog-api/
+https://dog.ceo/dog-api/documentation/
 
 ## Acceptance Criteria
 1. List of Breeds
