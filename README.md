@@ -2,8 +2,10 @@
 
 ## Onboarding
 ## Requirements
-1 - Please use the last version from Xcode 13 or bigger
-2 - DogBreeds API document -> https://dog.ceo/dog-api/
+1. Please use the last version from Xcode 13 or bigger
+
+## API Document
+https://dog.ceo/dog-api/
 
 ## Acceptance Criteria
 1. List of Breeds
