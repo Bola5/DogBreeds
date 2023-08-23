@@ -29,7 +29,10 @@ extension UIImageView {
     }
     
     func loadImageWith(url: String, contentMode mode: ContentMode = .scaleAspectFit) {
-        guard let url = URL(string: url) else { return }
+        guard let url = URL(string: url) else {
+            self.image = UIImage(named: "PlaceholderImage")
+            return
+        }
         self.downloaded(from: url, contentMode: mode)
     }
     
