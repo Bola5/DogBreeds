@@ -2,7 +2,7 @@
 
 ## Onboarding
 ## Requirements
-1. Please use the last version from Xcode 13 or bigger
+1. Please use the last version from Xcode 13 or higher
 
 ## API Document
 https://dog.ceo/dog-api/documentation/
